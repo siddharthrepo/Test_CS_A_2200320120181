@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-left: 380px;
+            padding-top: 200px;
+            
+        }
+        .login-container{
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 50%;
+        }
+        #loginForm{
+            padding: 20px;
+        }
+        #heading{
+            padding-left: 40%;
+        }
+        #password{
+            width: 70%;
+            height: 30px;
+        }
+        #email{
+            width:70%;
+            height: 30px;
+        }
+    </style>   
+</head> 
+<body>
+    <div class="login-container">
+        <h2 id="heading">Login</h2>
+        <form id="loginForm">
+            <input type="email" id="email" name="email" required placeholder="Email" >
+            <div id="emailError" class="error"></div>
+            <br>
+            <input type="password" id="password" name="password" required placeholder="Password">
+            <div id="passwordError" class="error"></div>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+        
+
+        <div id="loginLinkContainer" class="login-link"></div>
+    </div>
+</body>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+    
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        let isValid = true;
+
+       
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+            document.getElementById('emailError').innerText = 'Invalid Email Address';
+            isValid = false;
+        }
+
+        if (password.value === "admin") {
+            isValid = true;
+        }
+
+        if (!isValid) {
+            alert('Login Unsuccessful');
+        }
+        if (isValid){
+            // const linkContainer = document.getElementById('loginLinkContainer');
+            // linkContainer.innerHTML = ''; // Clear previous link if any
+            // 
+            // const anchor = document.createElement('a');
+            // anchor.href = 'convertor.html'; // Change this to the URL you want
+            // linkContainer.appendChild(anchor); 
+            window.location.href = 'convertor.html';
+        }
+    });
+</script>
+</html>
